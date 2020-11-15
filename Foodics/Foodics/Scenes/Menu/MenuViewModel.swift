@@ -1,5 +1,5 @@
 //
-//  MenuViewController.swift
+//  MenuViewModel.swift
 //  Foodics
 //
 //  Created by Ahmed Ramy on 11/16/20.
@@ -8,6 +8,4 @@
 
 import Foundation
 
-final class MenuViewController: BaseViewController {
-  
-}
+final class MenuViewModel: BaseViewModel { }

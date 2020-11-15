@@ -10,5 +10,17 @@ import XCTest
 @testable import Foodics
 
 class MenuTests: BaseSceneTests {
+  var sut: MenuViewModel!
+  
+  override func setUp() {
+    super.setUp()
+    sut = MenuViewModel(router: router)
+  }
+  
+  override func tearDown() {
+    super.tearDown()
+    sut = nil
+  }
+  
   
 }
