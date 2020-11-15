@@ -14,6 +14,7 @@ target 'Foodics' do
   pod 'IQKeyboardManagerSwift', '~> 6.5' # Easier Keyboard Manipulation
   pod 'Moya/RxSwift', '~> 14.0' # Moya + RxSwift to be able to do complex stuff
   pod 'PKHUD', '~> 5.3' # Generic Loader Pod
+  pod 'Carbon', '~> 1.0.0-rc.6' # For Faster UI Building by Code and butter-smooth UI
 
   target 'FoodicsTests' do
     inherit! :search_paths

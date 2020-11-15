@@ -10,46 +10,24 @@ import Foundation
 
 @testable import Foodics
 
-final class CacheMock: CacheProtocol {
-    var dataStorage: [CachingKey: Any] = [:]
-    
-    func getBool(key: CachingKey) -> Bool? {
-        return dataStorage[key] as? Bool
-    }
-    
-    func saveBool(value: Bool, key: CachingKey) {
-        dataStorage[key] = value
-    }
-    
-    func saveData(_ data: Data, key: CachingKey) {
-        dataStorage[key] = data
-    }
-    
-    func getObject<T>(_ object: T.Type, key: CachingKey) -> T? where T : Decodable, T : Encodable {
-        return dataStorage[key] as? T
-    }
-    
-    func getData(key: CachingKey) -> [Data]? {
-        return (dataStorage[key] as? Data).map({[$0]})
-    }
-    
-    func saveData(_ data: Data?, key: CachingKey) {
-        dataStorage[key] = data
-    }
-    
-    func getObject<T>(_ object: T, key: CachingKey) -> T? {
-        return dataStorage[key] as? T
-    }
-    
-    func saveObject<T>(_ object: T, key: CachingKey) {
-        dataStorage[key] = object
-    }
-    
-    func removeObject(key: CachingKey) {
-        dataStorage.removeValue(forKey: key)
-    }
-    
-    func flushCache() {
-        dataStorage.removeAll()
-    }
+final class DiskStorageMock: Storage {
+  var dataStorage: [StorageKey: Any] = [:]
+  
+  func fetchValue(for key: StorageKey) throws -> Data {
+    guard let data = dataStorage[key] as? Data else { throw StorageError.notFound }
+    return data
+  }
+  
+  func fetchValue(for key: StorageKey, handler: @escaping Handler<Data>) {
+    guard let data = dataStorage[key] as? Data else { handler(.failure(StorageError.notFound)); return }
+    handler(.success(data))
+  }
+  
+  func save(value: Data, for key: StorageKey) throws {
+    dataStorage[key] = value
+  }
+  
+  func save(value: Data, for key: StorageKey, handler: @escaping Handler<Data>) {
+    dataStorage[key] = value
+  }
 }

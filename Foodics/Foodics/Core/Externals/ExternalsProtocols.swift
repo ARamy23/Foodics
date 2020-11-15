@@ -8,16 +8,17 @@
 
 import UIKit
 
-protocol CacheProtocol {
-  func getData(key: CachingKey) -> [Data]?
-  func saveData(_ data: Data, key: CachingKey)
-  func getObject<T: Codable>(_ object: T.Type, key: CachingKey) -> T?
-  func saveObject<T: Codable>(_ object: T, key: CachingKey)
-  func getBool(key: CachingKey) -> Bool?
-  func saveBool(value: Bool, key: CachingKey)
-  func removeObject(key: CachingKey)
-  func flushCache()
+protocol ReadableStorage {
+    func fetchValue(for key: StorageKey) throws -> Data
+    func fetchValue(for key: StorageKey, handler: @escaping Handler<Data>)
 }
+
+protocol WritableStorage {
+    func save(value: Data, for key: StorageKey) throws
+    func save(value: Data, for key: StorageKey, handler: @escaping Handler<Data>)
+}
+
+typealias Storage = ReadableStorage & WritableStorage
 
 protocol RouterProtocol: class {
   var presentedView: BaseViewController! { set get }
@@ -36,8 +37,6 @@ protocol RouterProtocol: class {
 }
 
 protocol NetworkProtocol: class {
-  /// Use this when u don't want to deal with the response and parse it urself, rather have the
-  /// model parsed inside the network layer and returned to u
   func call<T: Codable, U: Endpoint>(api: U, model: T.Type, _ onFetch: @escaping (Result<T, Error>) -> Void)
 }
 

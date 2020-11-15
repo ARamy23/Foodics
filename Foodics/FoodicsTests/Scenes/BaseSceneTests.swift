@@ -14,16 +14,15 @@ class BaseSceneTests: XCTestCase {
   
   var network: NetworkMock!
   var router: RouterMock!
-  var cache: CacheMock!
+  var cache: DiskStorageMock!
   
   override func setUp() {
     super.setUp()
     network = NetworkMock()
     router = RouterMock()
-    cache = CacheMock()
+    cache = DiskStorageMock()
     
-    ServiceLocator.cache = cache
-    ServiceLocator.keychain = cache
+    ServiceLocator.storage = cache
     ServiceLocator.network = network
   }
   

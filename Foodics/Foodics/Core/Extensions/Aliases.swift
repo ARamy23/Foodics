@@ -8,5 +8,6 @@
 
 import Foundation
 
+public typealias Handler<T> = (Result<T, Error>) -> Void
 public typealias Callback<T> = (_: T) -> Void
 public typealias VoidCallback = () -> Void

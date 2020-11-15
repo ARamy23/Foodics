@@ -7,15 +7,35 @@
 //
 
 import UIKit
+import SnapKit
 import PKHUD
 
-class BaseViewController: UIViewController, LoadableViewController {
+open class BaseViewController: UIViewController, LoadableViewController {
   var router: RouterProtocol = Router()
+  
+  let vStackView = UIStackView(axis: .vertical, spacing: 0)
+  
+  let spacingView = UIView().then {
+    $0.backgroundColor = R.color.primaryBackgroundColor()
+  }
+  
   var isDidAppeared = false
   var isWillAppeared = false
+  open var showTopSpacingView: Bool {
+    return true
+  }
   
-  override func viewDidLoad() {
+  
+  open override func viewDidLoad() {
     super.viewDidLoad()
+    view.addSubview(vStackView)
+
+    vStackView.snp.makeConstraints {
+      $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+      $0.leading.trailing.equalToSuperview()
+      $0.bottom.equalToSuperview()
+    }
+    
     router.presentedView = self
   }
   
@@ -52,6 +72,13 @@ class BaseViewController: UIViewController, LoadableViewController {
 
   open func viewWillAppearOnce(_ animated: Bool) {
     self.view.backgroundColor = R.color.primaryBackgroundColor()
+    
+    guard showTopSpacingView else { return }
+    if navigationController != nil {
+      spacingView.removeFromSuperview()
+      vStackView.insertArrangedSubview(spacingView, at: .zero)
+      spacingView.snp.remakeConstraints { $0.height.equalTo(16) }
+    }
   }
   
   open override func viewWillDisappear(_ animated: Bool) {

@@ -13,9 +13,9 @@ public protocol Endpoint: TargetType {}
 extension Endpoint {
   var baseURL: URL {
     #if DEBUG
-    return URL(string: "https://api.foodics.dev/v5")!
+    return URL(string: "https://api.foodics.dev/v5/")!
     #elseif RELEASE
-    return URL(string: "https://api.foodics.dev/v5")! // TODO: - Change BaseURL to the production BaseURL
+    return URL(string: "https://api.foodics.dev/v5/")! // TODO: - Change BaseURL to the production BaseURL
     #endif
   }
   

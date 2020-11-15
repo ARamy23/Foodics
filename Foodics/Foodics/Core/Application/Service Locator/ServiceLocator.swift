@@ -10,6 +10,6 @@ import Foundation
 
 enum ServiceLocator {
   static var network: NetworkProtocol = MoyaManager()
-  static var cache: CacheProtocol = UserDefaultsManager()
-  static var keychain: CacheProtocol = KeychainManager()
+  static var storage: Storage = DiskStorage()
+  static var cacheManager = CacheManager(storage: storage)
 }
