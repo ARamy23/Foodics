@@ -1,0 +1,23 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'Foodics' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for Foodics
+  pod 'SwifterSwift', '~> 5.2.0'
+  pod 'Nuke', '~> 9.0' # We use this as it is faster than Kingfisher
+  pod 'SnapKit', '~> 5.0.0' # Faster UI Building by Code
+  pod 'KeychainSwift', '~> 19.0' # Easier APIs to deal with Keychain
+  pod 'R.swift', '~> 5.2.2' # Better Resources Management, just like Android's
+  pod 'IQKeyboardManagerSwift', '~> 6.5' # Easier Keyboard Manipulation
+  pod 'Moya/RxSwift', '~> 14.0' # Moya + RxSwift to be able to do complex stuff
+  pod 'PKHUD', '~> 5.3' # Generic Loader Pod
+
+  target 'FoodicsTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
