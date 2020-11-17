@@ -215,7 +215,7 @@ private extension Button {
 
   func setText(_ text: String, buttonStyle: ButtonStyle) {
     UIView.performWithoutAnimation {
-      setAttributedTitle(AttributedStringBuilder()
+      setAttributedTitle(NSAttributedStringBuilder()
         .add(text: text)
         .add(foregroundColor: buttonStyle.textColor)
         .build(), for: .normal)

@@ -615,8 +615,20 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizables` struct is generated, and contains static references to 10 localization keys.
+    /// This `R.string.localizables` struct is generated, and contains static references to 13 localization keys.
     struct localizables {
+      /// en translation: Category Calories: %@
+      ///
+      /// Locales: ar, en
+      static let category_calories = Rswift.StringResource(key: "category_calories", tableName: "Localizables", bundle: R.hostingBundle, locales: ["ar", "en"], comment: nil)
+      /// en translation: Category Description: %@
+      ///
+      /// Locales: ar, en
+      static let category_description = Rswift.StringResource(key: "category_description", tableName: "Localizables", bundle: R.hostingBundle, locales: ["ar", "en"], comment: nil)
+      /// en translation: Category Name: %@
+      ///
+      /// Locales: ar, en
+      static let category_name = Rswift.StringResource(key: "category_name", tableName: "Localizables", bundle: R.hostingBundle, locales: ["ar", "en"], comment: nil)
       /// en translation: Names can't contain emojis.
       ///
       /// Locales: ar, en
@@ -657,6 +669,57 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: ar, en
       static let password_hint_locked = Rswift.StringResource(key: "password_hint_locked", tableName: "Localizables", bundle: R.hostingBundle, locales: ["ar", "en"], comment: nil)
+
+      /// en translation: Category Calories: %@
+      ///
+      /// Locales: ar, en
+      static func category_calories(_ value1: String, preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          let format = NSLocalizedString("category_calories", tableName: "Localizables", bundle: hostingBundle, comment: "")
+          return String(format: format, locale: applicationLocale, value1)
+        }
+
+        guard let (locale, bundle) = localeBundle(tableName: "Localizables", preferredLanguages: preferredLanguages) else {
+          return "category_calories"
+        }
+
+        let format = NSLocalizedString("category_calories", tableName: "Localizables", bundle: bundle, comment: "")
+        return String(format: format, locale: locale, value1)
+      }
+
+      /// en translation: Category Description: %@
+      ///
+      /// Locales: ar, en
+      static func category_description(_ value1: String, preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          let format = NSLocalizedString("category_description", tableName: "Localizables", bundle: hostingBundle, comment: "")
+          return String(format: format, locale: applicationLocale, value1)
+        }
+
+        guard let (locale, bundle) = localeBundle(tableName: "Localizables", preferredLanguages: preferredLanguages) else {
+          return "category_description"
+        }
+
+        let format = NSLocalizedString("category_description", tableName: "Localizables", bundle: bundle, comment: "")
+        return String(format: format, locale: locale, value1)
+      }
+
+      /// en translation: Category Name: %@
+      ///
+      /// Locales: ar, en
+      static func category_name(_ value1: String, preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          let format = NSLocalizedString("category_name", tableName: "Localizables", bundle: hostingBundle, comment: "")
+          return String(format: format, locale: applicationLocale, value1)
+        }
+
+        guard let (locale, bundle) = localeBundle(tableName: "Localizables", preferredLanguages: preferredLanguages) else {
+          return "category_name"
+        }
+
+        let format = NSLocalizedString("category_name", tableName: "Localizables", bundle: bundle, comment: "")
+        return String(format: format, locale: locale, value1)
+      }
 
       /// en translation: Names can't contain emojis.
       ///

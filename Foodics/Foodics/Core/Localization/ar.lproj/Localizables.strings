@@ -15,3 +15,6 @@
 "password_hint_unlocked" = "كلمة المرور.";
 "password_hint_locked" = "••••••••••••••••••••••••••";
 "your_current_password" = "كلمة المرور الحالية";
+"category_name" = "اسم الفئة: %@";
+"category_description" = "وصف الفئة: %@";
+"category_calories" = "عدد السعرات الحرارية: %@";

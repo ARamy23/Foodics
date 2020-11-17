@@ -36,9 +36,21 @@ public final class MenuViewModel: ListableViewModel, MenuViewModelProtocol {
   }
   
   func buildUI(_ categories: [MenuCategoriesResponse.Data]) -> [Section] {
-    [
+    let section = makeSection(id: "categories", items: categories.map { category -> [CellNode] in
       
-    ]
+      let name = (UILocalization.shared.isRTLLanguage ? category.nameLocalized : category.name) ?? .empty
+      let description = (UILocalization.shared.isRTLLanguage ? category.descriptionLocalized : category.description) ?? .empty
+      
+      return [
+        SpacingComponent(24).toCellNode(),
+        LabelComponent(text: R.string.localizables.category_name(name), color: .black, font: TextStyles.title1Font, isCentered: true, backgroundColor: .clear).toCellNode(),
+        LabelComponent(text: R.string.localizables.category_description(description), color: .black, font: TextStyles.bodyFont, isCentered: true, backgroundColor: .clear).toCellNode(),
+        LabelComponent(text: R.string.localizables.category_calories((category.calories ?? .zero).string), color: .black, font: TextStyles.buttonFont, isCentered: true, backgroundColor: .clear).toCellNode(),
+        SpacingComponent(24).toCellNode()
+      ]
+    }.flatMap { $0 })
+    
+    return [section]
   }
 }
 

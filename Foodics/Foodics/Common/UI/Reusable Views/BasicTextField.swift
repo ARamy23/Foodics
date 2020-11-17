@@ -35,7 +35,7 @@ class BasicTextField: UIView, TextFieldComponentUI {
   
   var placeholder: String? {
     didSet {
-      self.textField.attributedPlaceholder = AttributedStringBuilder()
+      self.textField.attributedPlaceholder = NSAttributedStringBuilder()
         .add(text: placeholder ?? "")
         .add(foregroundColor: R.color.textFieldPlaceholderTextColor() ?? .red)
         .build()

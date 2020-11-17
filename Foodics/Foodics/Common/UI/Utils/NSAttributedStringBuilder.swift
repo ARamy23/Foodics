@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AttributedStringBuilder {
+public class NSAttributedStringBuilder {
     private var attributedString = NSMutableAttributedString()
     
     private func wholeString() -> NSRange {
@@ -16,19 +16,19 @@ class AttributedStringBuilder {
     }
     
     @discardableResult
-    func add(text: String)-> AttributedStringBuilder {
+    public func add(text: String)-> NSAttributedStringBuilder {
         attributedString.append(NSAttributedString(string: text))
         return self
     }
     
     @discardableResult
-    func add(foregroundColor: UIColor)-> AttributedStringBuilder {
+    public func add(foregroundColor: UIColor)-> NSAttributedStringBuilder {
         attributedString.addAttribute(.foregroundColor, value: foregroundColor, range: wholeString())
         return self
     }
     
     @discardableResult
-    func add(foregroundColor: UIColor, for string: String)-> AttributedStringBuilder {
+    public func add(foregroundColor: UIColor, for string: String)-> NSAttributedStringBuilder {
         guard let substringRange = attributedString.string.range(of: string) else { return self }
         let range = NSRange(substringRange, in: attributedString.string)
         attributedString.addAttribute(.foregroundColor, value: foregroundColor, range: range)
@@ -36,7 +36,7 @@ class AttributedStringBuilder {
     }
     
     @discardableResult
-    func add(font: UIFont, for string: String)-> AttributedStringBuilder {
+    public func add(font: UIFont, for string: String)-> NSAttributedStringBuilder {
         guard let substringRange = attributedString.string.range(of: string) else { return self }
         let range = NSRange(substringRange, in: attributedString.string)
         attributedString.addAttribute(.font, value: font, range: range)
@@ -44,20 +44,20 @@ class AttributedStringBuilder {
     }
     
     @discardableResult
-    func add(font: UIFont)-> AttributedStringBuilder {
+    public func add(font: UIFont)-> NSAttributedStringBuilder {
         attributedString.addAttribute(.font, value: font, range: wholeString())
         return self
     }
     
     @discardableResult
-    func add(underlineFor string: String)-> AttributedStringBuilder {
+    public func add(underlineFor string: String)-> NSAttributedStringBuilder {
         guard let substringRange = attributedString.string.range(of: string) else { return self }
         let range = NSRange(substringRange, in: attributedString.string)
         attributedString.addAttribute(.underlineStyle, value: NSUnderlineStyle.single, range: range)
         return self
     }
     
-    func build() -> NSAttributedString {
+    public func build() -> NSAttributedString {
         attributedString.attributedSubstring(from: wholeString())
     }
 }

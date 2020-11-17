@@ -32,6 +32,8 @@
 		B86790082562E28E002CBA1D /* ListableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86790072562E28E002CBA1D /* ListableViewModel.swift */; };
 		B867900C2562E2C4002CBA1D /* SpacingComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B867900B2562E2C4002CBA1D /* SpacingComponent.swift */; };
 		B867900E2562E302002CBA1D /* Component+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B867900D2562E302002CBA1D /* Component+Additions.swift */; };
+		B867901B256477A5002CBA1D /* LabelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B867901A256477A5002CBA1D /* LabelComponent.swift */; };
+		B867901D256479D8002CBA1D /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = B867901C256479D8002CBA1D /* Label.swift */; };
 		B86FB16225619845002BD5B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86FB16125619845002BD5B6 /* AppDelegate.swift */; };
 		B86FB16425619845002BD5B6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86FB16325619845002BD5B6 /* SceneDelegate.swift */; };
 		B86FB16B25619847002BD5B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B86FB16A25619847002BD5B6 /* Assets.xcassets */; };
@@ -134,6 +136,8 @@
 		B86790072562E28E002CBA1D /* ListableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListableViewModel.swift; sourceTree = "<group>"; };
 		B867900B2562E2C4002CBA1D /* SpacingComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacingComponent.swift; sourceTree = "<group>"; };
 		B867900D2562E302002CBA1D /* Component+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Component+Additions.swift"; sourceTree = "<group>"; };
+		B867901A256477A5002CBA1D /* LabelComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelComponent.swift; sourceTree = "<group>"; };
+		B867901C256479D8002CBA1D /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		B86FB15E25619845002BD5B6 /* Foodics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Foodics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B86FB16125619845002BD5B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B86FB16325619845002BD5B6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -328,6 +332,7 @@
 			isa = PBXGroup;
 			children = (
 				B867900B2562E2C4002CBA1D /* SpacingComponent.swift */,
+				B867901A256477A5002CBA1D /* LabelComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -355,7 +360,6 @@
 		B86FB16025619845002BD5B6 /* Foodics */ = {
 			isa = PBXGroup;
 			children = (
-				B86790092562E2A5002CBA1D /* UI */,
 				B8620A882561DC5F005D8F53 /* Scenes */,
 				B8C5ED5825619DC300EC4D29 /* Core */,
 				B8C5EDCD25619DD200EC4D29 /* Common */,
@@ -478,6 +482,7 @@
 				B8C5ED5525619DC300EC4D29 /* ScrollView.swift */,
 				B8C5ED5625619DC300EC4D29 /* NavigationLeadingTextView.swift */,
 				B8C5ED5725619DC300EC4D29 /* Button.swift */,
+				B867901C256479D8002CBA1D /* Label.swift */,
 			);
 			path = "Reusable Views";
 			sourceTree = "<group>";
@@ -485,6 +490,7 @@
 		B8C5ED5825619DC300EC4D29 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				B86790092562E2A5002CBA1D /* UI */,
 				B8620A6D2561B22C005D8F53 /* Localization */,
 				B8C5ED5925619DC300EC4D29 /* Externals */,
 				B8C5ED6D25619DC300EC4D29 /* Business */,
@@ -903,6 +909,8 @@
 				B8C5ED9525619DC300EC4D29 /* Style.swift in Sources */,
 				B8C5EDAA25619DC300EC4D29 /* PasswordTextField.swift in Sources */,
 				B8C5EDCB25619DC300EC4D29 /* UserSettingsService.swift in Sources */,
+				B867901D256479D8002CBA1D /* Label.swift in Sources */,
+				B867901B256477A5002CBA1D /* LabelComponent.swift in Sources */,
 				B8C5EDAB25619DC300EC4D29 /* BasicTextField.swift in Sources */,
 				B8C5ED9425619DC300EC4D29 /* NSAttributedStringBuilder.swift in Sources */,
 				B86790062562E1BE002CBA1D /* UITableViewCustomAdapter.swift in Sources */,

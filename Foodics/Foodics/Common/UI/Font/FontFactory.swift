@@ -8,7 +8,7 @@
 
 import UIKit.UIFont
 
-struct FontFactory {
+public struct FontFactory {
   static func getFont(_ family: FontFamily, _ weight: FontWeight, _ size: CGFloat) -> UIFont {
     return UIFont(name: generateFontName(family, weight), size: size) ?? .systemFont(ofSize: size)
   }
@@ -27,7 +27,7 @@ struct FontFactory {
   }
 }
 
-enum FontFamily: String {
+public enum FontFamily: String {
   /// English Font
   case poppins = "Poppins-"
   
@@ -35,7 +35,7 @@ enum FontFamily: String {
   case cairo = "Cairo-"
 }
 
-enum FontWeight: String {
+public enum FontWeight: String {
   case extraLight = "ExtraLight"
   case light = "Light"
   case regular = "Regular"
