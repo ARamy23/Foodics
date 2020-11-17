@@ -37,4 +37,16 @@ class MenuViewModelTests: BaseSceneTests {
     // Then
     XCTAssertTrue(sut.sections.value?.isEmpty == false)
   }
+  
+  func testWhenMenuViewWillAppearAndModelReturnsEmptyDataItShowsUpEmptyStateViewOnUI() {
+    // Given
+    let expectedResponseFromNetwork = MenuCategoriesResponse(data: [], links: nil, meta: nil)
+    network.object = expectedResponseFromNetwork
+    
+    // When
+    sut.viewWillAppear()
+    
+    // Then
+    XCTAssertTrue(sut.sections.value?.first?.cells.first?.component(as: EmptyStateComponent.self) != nil)
+  }
 }

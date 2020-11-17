@@ -34,6 +34,10 @@
 		B867900E2562E302002CBA1D /* Component+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B867900D2562E302002CBA1D /* Component+Additions.swift */; };
 		B867901B256477A5002CBA1D /* LabelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B867901A256477A5002CBA1D /* LabelComponent.swift */; };
 		B867901D256479D8002CBA1D /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = B867901C256479D8002CBA1D /* Label.swift */; };
+		B8679020256481AE002CBA1D /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B867901F256481AE002CBA1D /* EmptyStateView.swift */; };
+		B86790232564825D002CBA1D /* EmptyStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86790222564825D002CBA1D /* EmptyStateViewModel.swift */; };
+		B8679026256482E4002CBA1D /* EmptyStateComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8679025256482E4002CBA1D /* EmptyStateComponent.swift */; };
+		B867902825648604002CBA1D /* ButtonComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B867902725648604002CBA1D /* ButtonComponent.swift */; };
 		B86FB16225619845002BD5B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86FB16125619845002BD5B6 /* AppDelegate.swift */; };
 		B86FB16425619845002BD5B6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86FB16325619845002BD5B6 /* SceneDelegate.swift */; };
 		B86FB16B25619847002BD5B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B86FB16A25619847002BD5B6 /* Assets.xcassets */; };
@@ -138,6 +142,10 @@
 		B867900D2562E302002CBA1D /* Component+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Component+Additions.swift"; sourceTree = "<group>"; };
 		B867901A256477A5002CBA1D /* LabelComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelComponent.swift; sourceTree = "<group>"; };
 		B867901C256479D8002CBA1D /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
+		B867901F256481AE002CBA1D /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		B86790222564825D002CBA1D /* EmptyStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateViewModel.swift; sourceTree = "<group>"; };
+		B8679025256482E4002CBA1D /* EmptyStateComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateComponent.swift; sourceTree = "<group>"; };
+		B867902725648604002CBA1D /* ButtonComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonComponent.swift; sourceTree = "<group>"; };
 		B86FB15E25619845002BD5B6 /* Foodics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Foodics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B86FB16125619845002BD5B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B86FB16325619845002BD5B6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -323,6 +331,7 @@
 		B86790092562E2A5002CBA1D /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				B867901E25648149002CBA1D /* Views */,
 				B867900A2562E2AB002CBA1D /* Components */,
 			);
 			path = UI;
@@ -333,8 +342,27 @@
 			children = (
 				B867900B2562E2C4002CBA1D /* SpacingComponent.swift */,
 				B867901A256477A5002CBA1D /* LabelComponent.swift */,
+				B8679025256482E4002CBA1D /* EmptyStateComponent.swift */,
+				B867902725648604002CBA1D /* ButtonComponent.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		B867901E25648149002CBA1D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B867902125648252002CBA1D /* EmptyState */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B867902125648252002CBA1D /* EmptyState */ = {
+			isa = PBXGroup;
+			children = (
+				B867901F256481AE002CBA1D /* EmptyStateView.swift */,
+				B86790222564825D002CBA1D /* EmptyStateViewModel.swift */,
+			);
+			path = EmptyState;
 			sourceTree = "<group>";
 		};
 		B86FB15525619845002BD5B6 = {
@@ -894,6 +922,7 @@
 				B8678FF42562CBF9002CBA1D /* StorageError.swift in Sources */,
 				B8C5EDAD25619DC300EC4D29 /* NavigationLeadingTextView.swift in Sources */,
 				B8C5ED8D25619DC300EC4D29 /* UtilsPlugin.swift in Sources */,
+				B867902825648604002CBA1D /* ButtonComponent.swift in Sources */,
 				B8C5EDD72561A68300EC4D29 /* Logger.swift in Sources */,
 				B8C5EDC125619DC300EC4D29 /* Then.swift in Sources */,
 				B86790042562E09D002CBA1D /* NSDirectionalEdgeInsets+Extensions.swift in Sources */,
@@ -901,6 +930,7 @@
 				B8C5EDB925619DC300EC4D29 /* Router.swift in Sources */,
 				B8C5ED9225619DC300EC4D29 /* NavigationBar+Utils.swift in Sources */,
 				B8C5EDB525619DC300EC4D29 /* MoyaManager.swift in Sources */,
+				B8679020256481AE002CBA1D /* EmptyStateView.swift in Sources */,
 				B8C5ED8B25619DC300EC4D29 /* AppearancePlugin.swift in Sources */,
 				B8C5ED8C25619DC300EC4D29 /* ReportPlugin.swift in Sources */,
 				B867900C2562E2C4002CBA1D /* SpacingComponent.swift in Sources */,
@@ -930,12 +960,14 @@
 				B8C5ED9325619DC300EC4D29 /* ActionKit.swift in Sources */,
 				B8C5EDB025619DC300EC4D29 /* CacheManager.swift in Sources */,
 				B8620A872561B762005D8F53 /* R.generated.swift in Sources */,
+				B86790232564825D002CBA1D /* EmptyStateViewModel.swift in Sources */,
 				B86FB16225619845002BD5B6 /* AppDelegate.swift in Sources */,
 				B86FB16425619845002BD5B6 /* SceneDelegate.swift in Sources */,
 				B8C5EDC825619DC300EC4D29 /* ScenePluggableDelegate.swift in Sources */,
 				B8C5EDC925619DC300EC4D29 /* ServiceLocator.swift in Sources */,
 				B867900E2562E302002CBA1D /* Component+Additions.swift in Sources */,
 				B8620A8B2561DC71005D8F53 /* MenuViewController.swift in Sources */,
+				B8679026256482E4002CBA1D /* EmptyStateComponent.swift in Sources */,
 				B8678FF22562C464002CBA1D /* BaseModel.swift in Sources */,
 				B8C5EDBD25619DC300EC4D29 /* Codable+Helpers.swift in Sources */,
 				B8C5EDCA25619DC300EC4D29 /* LoadableViewController.swift in Sources */,

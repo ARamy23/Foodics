@@ -22,7 +22,7 @@ public struct LabelComponent: IdentifiableComponent {
 
   private var attributedText: NSAttributedString?
   
-  public init(text: String, color: UIColor = .black, font: UIFont = TextStyles.bodyFont,
+  public init(text: String, color: UIColor = .black, font: UIFont = TextStyles.body,
               isCentered: Bool = false, backgroundColor: UIColor = .white) {
     self.text = text
     self.color = color

@@ -114,13 +114,13 @@ class BasicTextField: UIView, TextFieldComponentUI {
   let textField = UITextField().then {
     $0.borderStyle = .none
     $0.setPlaceHolderTextColor(R.color.textFieldPlaceholderTextColor() ?? .red)
-    $0.font = TextStyles.bodyFont
+    $0.font = TextStyles.body
     $0.textColor = R.color.textFieldTextColor()
   }
   
   let hintLabel = UILabel().then {
     $0.textColor = R.color.textFieldHintColor()
-    $0.font = TextStyles.caption2Font
+    $0.font = TextStyles.caption2
   }
   
   let stackView = UIStackView().then {
