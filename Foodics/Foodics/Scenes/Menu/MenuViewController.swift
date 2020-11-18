@@ -8,6 +8,22 @@
 
 import Foundation
 
-final class MenuViewController: BaseViewController {
+final class MenuViewController: ListableViewController, BindableType {
+  var viewModel: MenuViewModel!
   
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    viewModel.viewWillAppear()
+  }
+  
+  override func viewWillAppearOnce(_ animated: Bool) {
+    super.viewWillAppearOnce(animated)
+    bindViewModel()
+  }
+  
+  func bindViewModel() {
+    viewModel.sections.subscribe {
+      self.renderer.render($0)
+    }
+  }
 }

@@ -42,6 +42,8 @@
 		B86FB16425619845002BD5B6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86FB16325619845002BD5B6 /* SceneDelegate.swift */; };
 		B86FB16B25619847002BD5B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B86FB16A25619847002BD5B6 /* Assets.xcassets */; };
 		B86FB16E25619847002BD5B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B86FB16C25619847002BD5B6 /* LaunchScreen.storyboard */; };
+		B88D2DCD25657C9F004412E5 /* BindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88D2DCC25657C9F004412E5 /* BindableType.swift */; };
+		B88D2DCF25657F23004412E5 /* SeparatorComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88D2DCE25657F23004412E5 /* SeparatorComponent.swift */; };
 		B8C5ED8B25619DC300EC4D29 /* AppearancePlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C5ED2C25619DC200EC4D29 /* AppearancePlugin.swift */; };
 		B8C5ED8C25619DC300EC4D29 /* ReportPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C5ED2D25619DC200EC4D29 /* ReportPlugin.swift */; };
 		B8C5ED8D25619DC300EC4D29 /* UtilsPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C5ED2E25619DC200EC4D29 /* UtilsPlugin.swift */; };
@@ -154,6 +156,8 @@
 		B86FB16F25619847002BD5B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B86FB17425619848002BD5B6 /* FoodicsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodicsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B86FB17A25619848002BD5B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B88D2DCC25657C9F004412E5 /* BindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindableType.swift; sourceTree = "<group>"; };
+		B88D2DCE25657F23004412E5 /* SeparatorComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorComponent.swift; sourceTree = "<group>"; };
 		B8C5ED2C25619DC200EC4D29 /* AppearancePlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppearancePlugin.swift; sourceTree = "<group>"; };
 		B8C5ED2D25619DC200EC4D29 /* ReportPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportPlugin.swift; sourceTree = "<group>"; };
 		B8C5ED2E25619DC200EC4D29 /* UtilsPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilsPlugin.swift; sourceTree = "<group>"; };
@@ -344,6 +348,7 @@
 				B867901A256477A5002CBA1D /* LabelComponent.swift */,
 				B8679025256482E4002CBA1D /* EmptyStateComponent.swift */,
 				B867902725648604002CBA1D /* ButtonComponent.swift */,
+				B88D2DCE25657F23004412E5 /* SeparatorComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -403,6 +408,14 @@
 				B86FB17A25619848002BD5B6 /* Info.plist */,
 			);
 			path = FoodicsTests;
+			sourceTree = "<group>";
+		};
+		B88D2DCB25657C91004412E5 /* Bindable */ = {
+			isa = PBXGroup;
+			children = (
+				B88D2DCC25657C9F004412E5 /* BindableType.swift */,
+			);
+			path = Bindable;
 			sourceTree = "<group>";
 		};
 		B8C5ED2A25619DC200EC4D29 /* Application */ = {
@@ -639,6 +652,7 @@
 		B8C5ED7E25619DC300EC4D29 /* Base Components */ = {
 			isa = PBXGroup;
 			children = (
+				B88D2DCB25657C91004412E5 /* Bindable */,
 				B8678FFE2562DF2F002CBA1D /* Listable */,
 				B8678FFD2562DF29002CBA1D /* Base */,
 			);
@@ -950,10 +964,12 @@
 				B86790022562E077002CBA1D /* UIStackView+Extensions.swift in Sources */,
 				B8C5EDB825619DC300EC4D29 /* Endpoint.swift in Sources */,
 				B8C5ED9B25619DC300EC4D29 /* Configurable.swift in Sources */,
+				B88D2DCF25657F23004412E5 /* SeparatorComponent.swift in Sources */,
 				B8C5EDAE25619DC300EC4D29 /* Button.swift in Sources */,
 				B8C5ED9725619DC300EC4D29 /* ButtonStyle.swift in Sources */,
 				B8C5EDBA25619DC300EC4D29 /* LocalError.swift in Sources */,
 				B8C5ED9925619DC300EC4D29 /* UIView+Extensions.swift in Sources */,
+				B88D2DCD25657C9F004412E5 /* BindableType.swift in Sources */,
 				B8C5ED9A25619DC300EC4D29 /* String+Extensions.swift in Sources */,
 				B8C5ED9125619DC300EC4D29 /* Dimensions.swift in Sources */,
 				B8620A732561B22C005D8F53 /* Language.swift in Sources */,

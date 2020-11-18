@@ -17,7 +17,10 @@ extension SceneDelegate {
     // Build and assign main window
     window = UIWindow(windowScene: scene)
     defer { window?.makeKeyAndVisible() }
-    set(rootViewTo: MenuViewController())
+    let vc = MenuViewController()
+    let viewModel = MenuViewModel(router: vc.router)
+    vc.bind(to: viewModel)
+    set(rootViewTo: vc)
   }
 }
 

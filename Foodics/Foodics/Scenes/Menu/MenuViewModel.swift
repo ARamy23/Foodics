@@ -18,8 +18,8 @@ public final class MenuViewModel: ListableViewModel, MenuViewModelProtocol {
   private let model: MenuModel
   public var sections = Dynamic<[Section]>([])
   
-  override init(router: RouterProtocol) {
-    self.model = MenuModel()
+  init(router: RouterProtocol, model: MenuModel = MenuModel()) {
+    self.model = model
     super.init(router: router)
   }
   
@@ -55,8 +55,13 @@ private extension MenuViewModel {
     model.refreshMenu(onFetch: handleFetchedMenu())
   }
   
+  func fetchPreviousMenuPage() {
+    model.fetchPreviousPage(onFetch: handleFetchedMenu())
+  }
+  
   func getCategoriesSection(_ categories: [MenuCategoriesResponse.Data]) -> [CellNode] {
-    return categories.map { category -> [CellNode] in
+    
+    var cells = categories.map { category -> [CellNode] in
       
       let name = (UILocalization.shared.isRTLLanguage ? category.nameLocalized : category.name) ?? .empty
       let description = (UILocalization.shared.isRTLLanguage ? category.descriptionLocalized : category.description) ?? .empty
@@ -66,9 +71,24 @@ private extension MenuViewModel {
         LabelComponent(text: R.string.localizables.category_name(name), color: .black, font: TextStyles.title1, isCentered: true, backgroundColor: .clear).toCellNode(),
         LabelComponent(text: R.string.localizables.category_description(description), color: .black, font: TextStyles.body, isCentered: true, backgroundColor: .clear).toCellNode(),
         LabelComponent(text: R.string.localizables.category_calories((category.calories ?? .zero).string), color: .black, font: TextStyles.button, isCentered: true, backgroundColor: .clear).toCellNode(),
-        SpacingComponent(24).toCellNode()
+        SpacingComponent(24).toCellNode(),
+        SeparatorComponent(leading: true).toCellNode()
       ]
     }.flatMap { $0 }
+    
+    if model.page > 1 {
+      cells.insert(ButtonComponent(type: .text("Load Previous Page", style: PrimaryButtonStyle()), height: 45, backgroundColor: .clear, isEnabled: true, onTap: {
+      self.fetchMenu()
+      }).toCellNode(), at: 0)
+    }
+    
+    if model.lastPage != model.page {
+      cells.append(ButtonComponent(type: .text("Load Next Page", style: PrimaryButtonStyle()), height: 45, backgroundColor: .clear, isEnabled: true, onTap: {
+        self.fetchMenu()
+        }).toCellNode())
+    }
+    
+    return cells
   }
   
   func getEmptyStateView() -> [CellNode] {
@@ -81,6 +101,7 @@ private extension MenuViewModel {
 public final class MenuModel: BaseModel {
   var page: Int = 1
   let limit: Int = Configurations.MenuConfiguration.categoriesPageLimit
+  var lastPage: Int?
   
   public func fetchMenu(onFetch: @escaping Handler<[MenuCategoriesResponse.Data]>) {
     if page == 1, let cachedCategories = try? self.cache.fetch([MenuCategoriesResponse.Data].self, for: .menu) {
@@ -90,6 +111,7 @@ public final class MenuModel: BaseModel {
         guard let self = self else { return }
         switch result {
         case .success(let response):
+          self.lastPage = response.meta?.lastPage
           let categoriesData = response.data ?? []
           try? self.cache.save(categoriesData, for: .menu)
           onFetch(.success(categoriesData))

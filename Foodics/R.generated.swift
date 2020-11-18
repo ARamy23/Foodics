@@ -106,7 +106,7 @@ struct R: Rswift.Validatable {
   }
   #endif
 
-  /// This `R.color` struct is generated, and contains static references to 24 colors.
+  /// This `R.color` struct is generated, and contains static references to 25 colors.
   struct color {
     /// Color `destructionButtonsColor`.
     static let destructionButtonsColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "destructionButtonsColor")
@@ -132,6 +132,8 @@ struct R: Rswift.Validatable {
     static let secondaryButtonTextColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "secondaryButtonTextColor")
     /// Color `secondaryTextColor`.
     static let secondaryTextColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "secondaryTextColor")
+    /// Color `separatorColor`.
+    static let separatorColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "separatorColor")
     /// Color `shadow`.
     static let shadow = Rswift.ColorResource(bundle: R.hostingBundle, name: "shadow")
     /// Color `textButtonTextColor`.
@@ -262,6 +264,15 @@ struct R: Rswift.Validatable {
     @available(iOS 11.0, *)
     static func secondaryTextColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
       return UIKit.UIColor(resource: R.color.secondaryTextColor, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "separatorColor", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func separatorColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.separatorColor, compatibleWith: traitCollection)
     }
     #endif
 
