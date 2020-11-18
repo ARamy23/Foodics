@@ -11,7 +11,8 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: ApplicationPluggableDelegate {
   override func plugins() -> [ApplicationPlugin] {
-    [
+    guard !isUnitTesting else { return [] }
+    return [
       CorePlugin(),
       ReportPlugin(),
       UtilsPlugin(),
@@ -20,4 +21,9 @@ class AppDelegate: ApplicationPluggableDelegate {
   }
 }
 
+private extension AppDelegate {
+  var isUnitTesting: Bool {
+    return ProcessInfo.processInfo.arguments.contains("-UNITTEST")
+  }
+}
 
