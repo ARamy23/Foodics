@@ -26,13 +26,24 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "NO">
+      shouldUseLaunchSchemeArgsEnv = "NO"
+      codeCoverageEnabled = "YES"
+      onlyGenerateCoverageForSpecifiedTargets = "YES">
       <CommandLineArguments>
          <CommandLineArgument
             argument = "-UNITTEST"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
+      <CodeCoverageTargets>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "B86FB15D25619845002BD5B6"
+            BuildableName = "Foodics.app"
+            BlueprintName = "Foodics"
+            ReferencedContainer = "container:Foodics.xcodeproj">
+         </BuildableReference>
+      </CodeCoverageTargets>
       <Testables>
          <TestableReference
             skipped = "NO">

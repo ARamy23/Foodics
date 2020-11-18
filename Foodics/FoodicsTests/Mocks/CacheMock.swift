@@ -13,12 +13,16 @@ import Foundation
 final class DiskStorageMock: Storage {
   var dataStorage: [StorageKey: Any] = [:]
   
+  private var checkedKeysInStorage: [StorageKey] = []
+  
   func fetchValue(for key: StorageKey) throws -> Data {
+    checkedKeysInStorage.append(key)
     guard let data = dataStorage[key] as? Data else { throw StorageError.notFound }
     return data
   }
   
   func fetchValue(for key: StorageKey, handler: @escaping Handler<Data>) {
+    checkedKeysInStorage.append(key)
     guard let data = dataStorage[key] as? Data else { handler(.failure(StorageError.notFound)); return }
     handler(.success(data))
   }
@@ -29,5 +33,13 @@ final class DiskStorageMock: Storage {
   
   func save(value: Data, for key: StorageKey, handler: @escaping Handler<Data>) {
     dataStorage[key] = value
+  }
+  
+  func didCheckForKeyInCache(_ key: StorageKey) -> Bool {
+    return checkedKeysInStorage.contains(key)
+  }
+  
+  func didCacheSomethingForKey(_ key: StorageKey) -> Bool {
+    return dataStorage[key] != nil
   }
 }

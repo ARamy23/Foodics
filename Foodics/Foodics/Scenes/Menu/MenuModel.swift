@@ -13,6 +13,10 @@ public final class MenuModel: BaseModel {
   let limit: Int = Configurations.MenuConfiguration.categoriesPageLimit
   var lastPage: Int?
   
+  var isFirstPage: Bool {
+    self.page == 1
+  }
+  
   public func fetchMenu(onFetch: @escaping Handler<[MenuCategoriesResponse.Data]>) {
     if page == 1, let cachedCategories = try? self.cache.fetch([MenuCategoriesResponse.Data].self, for: .menu) {
       onFetch(.success(cachedCategories))
@@ -23,7 +27,7 @@ public final class MenuModel: BaseModel {
         case .success(let response):
           self.lastPage = response.meta?.lastPage
           let categoriesData = response.data ?? []
-          try? self.cache.save(categoriesData, for: .menu)
+          if self.isFirstPage { try? self.cache.save(categoriesData, for: .menu) }
           onFetch(.success(categoriesData))
           self.page += 1
         case .failure(let error):
@@ -45,7 +49,7 @@ public final class MenuModel: BaseModel {
       switch result {
       case .success(let response):
         let categoriesData = response.data ?? []
-        try? self.cache.save(categoriesData, for: .menu)
+        if self.isFirstPage { try? self.cache.save(categoriesData, for: .menu) }
         onFetch(.success(categoriesData))
       case .failure(let error):
         onFetch(.failure(error))

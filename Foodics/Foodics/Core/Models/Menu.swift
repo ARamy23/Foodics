@@ -23,7 +23,11 @@ public struct MenuCategoriesResponse: Codable {
 
 public extension MenuCategoriesResponse {
   // MARK: - Data
-  struct Data: Codable {
+  final class Data: Codable, Equatable, Then  {
+    public static func == (lhs: MenuCategoriesResponse.Data, rhs: MenuCategoriesResponse.Data) -> Bool {
+      lhs.id ?? "-1" == rhs.id ?? "0"
+    }
+    
     public var category: Category?
     public var id: String?
     public var sku: String?
