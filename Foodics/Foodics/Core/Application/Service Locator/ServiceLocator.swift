@@ -8,8 +8,17 @@
 
 import Foundation
 
-enum ServiceLocator {
-  static var network: NetworkProtocol = MoyaManager()
-  static var storage: Storage = DiskStorage()
-  static var cacheManager = CacheManager(storage: storage)
+final class ServiceLocator {
+  
+  static var shared: ServiceLocator!
+  
+  init(network: NetworkProtocol, storage: Storage) {
+    self.network = network
+    self.storage = storage
+    self.cacheManager = CacheManager(storage: storage)
+  }
+  
+  var network: NetworkProtocol
+  var storage: Storage
+  var cacheManager: CacheManager
 }

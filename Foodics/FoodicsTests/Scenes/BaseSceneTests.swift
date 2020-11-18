@@ -22,8 +22,10 @@ class BaseSceneTests: XCTestCase {
     router = RouterMock()
     cache = DiskStorageMock()
     
-    ServiceLocator.storage = cache
-    ServiceLocator.network = network
+    ServiceLocator.shared = ServiceLocator(
+      network: network,
+      storage: cache
+    )
   }
   
   override func tearDown() {
@@ -31,5 +33,7 @@ class BaseSceneTests: XCTestCase {
     network = nil
     router = nil
     cache = nil
+    
+    ServiceLocator.shared = nil
   }
 }

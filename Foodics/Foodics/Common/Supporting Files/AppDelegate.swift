@@ -12,6 +12,7 @@ import UIKit
 class AppDelegate: ApplicationPluggableDelegate {
   override func plugins() -> [ApplicationPlugin] {
     [
+      CorePlugin(),
       ReportPlugin(),
       UtilsPlugin(),
       AppearancePlugin()

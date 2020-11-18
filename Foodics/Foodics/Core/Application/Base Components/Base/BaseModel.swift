@@ -13,8 +13,8 @@ public class BaseModel {
   var network: NetworkProtocol
   
   init(
-    cache: CacheManager = ServiceLocator.cacheManager,
-    network: NetworkProtocol = ServiceLocator.network) {
+    cache: CacheManager = ServiceLocator.shared.cacheManager,
+    network: NetworkProtocol = ServiceLocator.shared.network) {
     self.cache = cache
     self.network = network
   }

@@ -17,6 +17,7 @@ extension SceneDelegate {
     // Build and assign main window
     window = UIWindow(windowScene: scene)
     defer { window?.makeKeyAndVisible() }
+    guard !isUnitTesting else { return }
     let vc = MenuViewController()
     let viewModel = MenuViewModel(router: vc.router)
     vc.bind(to: viewModel)
@@ -31,5 +32,9 @@ private extension SceneDelegate {
   /// Assign root view to window. Adds any environment objects if needed.
   func set<T: UIViewController>(rootViewTo view: T) {
     window?.rootViewController = view
+  }
+  
+  var isUnitTesting: Bool {
+    return ProcessInfo.processInfo.arguments.contains("-UNITTEST")
   }
 }
