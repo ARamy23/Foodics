@@ -21,7 +21,9 @@ extension SceneDelegate {
     let vc = MenuViewController()
     let viewModel = MenuViewModel(router: vc.router)
     vc.bind(to: viewModel)
-    set(rootViewTo: vc)
+    
+    let navController = UINavigationController(rootViewController: vc)
+    set(rootViewTo: navController)
   }
 }
 

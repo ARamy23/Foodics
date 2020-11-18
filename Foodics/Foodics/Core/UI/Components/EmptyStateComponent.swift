@@ -33,6 +33,7 @@ public struct EmptyStateComponent: IdentifiableComponent {
 public extension EmptyStateComponent {
   enum ViewType {
     case noCategories
+    case noProducts
       
     func build(_ buttonOnTap: @escaping VoidCallback = { }) -> EmptyStateViewModelProtocol {
       switch self {
@@ -43,6 +44,14 @@ public extension EmptyStateComponent {
           image: nil,
           buttonText: "Try again",
           buttonOnTap: buttonOnTap)
+      case .noProducts:
+        return EmptyStateViewModel(
+          title: "We couldn't find any products 🤨, care to try again? 😊",
+          subtitle: "It's propably a fluke...",
+          image: nil,
+          buttonText: "Try Again",
+          buttonOnTap: buttonOnTap
+        )
       }
     }
   }

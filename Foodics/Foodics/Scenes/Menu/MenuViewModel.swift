@@ -51,7 +51,7 @@ private extension MenuViewModel {
     
     if model.page > 1 {
       cells.insert(ButtonComponent(type: .text("Load Previous Page", style: PrimaryButtonStyle()), height: 45, backgroundColor: .clear, isEnabled: true, onTap: {
-      self.fetchMenu()
+      self.fetchPreviousMenuPage()
       }).toCellNode(), at: 0)
     }
     
@@ -111,6 +111,10 @@ private extension MenuViewModel {
   }
   
   func handleSelectingCategory(_ category: MenuCategoriesResponse.Data) {
-    // Navigate to Products Screen
+    let vc = ProductsViewController()
+    let viewMdoel = ProductsViewModel(router: self.router, category: category)
+    vc.bind(to: viewMdoel)
+    
+    router.push(vc)
   }
 }

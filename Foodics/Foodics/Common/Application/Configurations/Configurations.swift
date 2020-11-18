@@ -11,6 +11,7 @@ import UIKit
 enum Configurations {
   enum MenuConfiguration {
     public static let categoriesPageLimit: Int = 20
+    public static let productsPageLimit: Int = 20
   }
   
   enum UI {

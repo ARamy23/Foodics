@@ -10,6 +10,7 @@ import Moya
 
 enum CategoriesEndpoint {
   case categories(_ page: Int, _ limit: Int)
+  case products(_ page: Int, _ limit: Int)
 }
 
 extension CategoriesEndpoint: Endpoint {
@@ -17,6 +18,8 @@ extension CategoriesEndpoint: Endpoint {
     switch self {
     case .categories:
       return "categories"
+    case .products:
+      return "products"
     }
   }
   
@@ -28,12 +31,20 @@ extension CategoriesEndpoint: Endpoint {
                      "limit": limit], // TODO: - Change limit key to the correct key after Foodics Reply
         encoding: URLEncoding.default
       )
+    case let .products(page, limit):
+      return .requestParameters(parameters: [
+        "include": "category",
+        "page": page,
+        "limit": limit
+      ], encoding: URLEncoding.default)
     }
   }
   
   var method: Method {
     switch self {
     case .categories:
+      return .get
+    case .products:
       return .get
     }
   }
