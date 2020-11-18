@@ -36,7 +36,10 @@ public class ButtonComponent: IdentifiableComponent {
   }
 
   public func renderContent() -> Button {
-    return Button()
+    return Button(type: .system).then {
+      $0.titleLabel?.numberOfLines = 0
+      $0.titleLabel?.textAlignment = .center
+    }
   }
   
   public func layout(content: Button, in container: UIView) {
