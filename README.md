@@ -1,5 +1,4 @@
-Foodics
-# Gamer-Store
+# Foodics
 
 ## Summary
 
