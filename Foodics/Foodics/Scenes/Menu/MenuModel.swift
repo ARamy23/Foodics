@@ -13,6 +13,8 @@ public final class MenuModel: BaseModel {
   let limit: Int = Configurations.MenuConfiguration.categoriesPageLimit
   var lastPage: Int?
   
+  public init() { }
+  
   var isFirstPage: Bool {
     self.page == 1
   }

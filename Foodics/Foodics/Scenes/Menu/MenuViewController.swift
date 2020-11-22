@@ -10,6 +10,9 @@ import Foundation
 
 final class MenuViewController: ListableViewController, BindableType {
   var viewModel: MenuViewModel!
+  lazy var pullToRefreshPlugin: PullToRefreshPlugin = .init(tableView: self.tableView) {
+    self.viewModel.refreshMenu()
+  }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
@@ -24,6 +27,7 @@ final class MenuViewController: ListableViewController, BindableType {
   func bindViewModel() {
     viewModel.sections.subscribe {
       self.renderer.render($0)
+      self.pullToRefreshPlugin.stopRefreshing()
     }
   }
 }

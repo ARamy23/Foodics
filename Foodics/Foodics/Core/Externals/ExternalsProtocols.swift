@@ -8,19 +8,19 @@
 
 import UIKit
 
-protocol ReadableStorage {
+public protocol ReadableStorage {
     func fetchValue(for key: StorageKey) throws -> Data
     func fetchValue(for key: StorageKey, handler: @escaping Handler<Data>)
 }
 
-protocol WritableStorage {
+public protocol WritableStorage {
     func save(value: Data, for key: StorageKey) throws
     func save(value: Data, for key: StorageKey, handler: @escaping Handler<Data>)
 }
 
-typealias Storage = ReadableStorage & WritableStorage
+public typealias Storage = ReadableStorage & WritableStorage
 
-protocol RouterProtocol: class {
+public protocol RouterProtocol: class {
   var presentedView: BaseViewController! { set get }
   func present(_ view: UIViewController)
   func startActivityIndicator()
@@ -36,7 +36,7 @@ protocol RouterProtocol: class {
   func alertWithAction(title: String?, message: String?, alertStyle: UIAlertController.Style, tintColor: UIColor?, actions: [AlertAction])
 }
 
-protocol NetworkProtocol: class {
+public protocol NetworkProtocol: class {
   func call<T: Codable, U: Endpoint>(api: U, model: T.Type, _ onFetch: @escaping (Result<T, Error>) -> Void)
 }
 

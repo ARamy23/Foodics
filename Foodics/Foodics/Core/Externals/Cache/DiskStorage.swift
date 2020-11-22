@@ -24,7 +24,7 @@ public final class DiskStorage {
 }
 
 extension DiskStorage: WritableStorage {
-  func save(value: Data, for key: StorageKey) throws {
+  public func save(value: Data, for key: StorageKey) throws {
     let url = path.appendingPathComponent(key.key)
     do {
       try self.createFolders(in: url)
@@ -34,7 +34,7 @@ extension DiskStorage: WritableStorage {
     }
   }
   
-  func save(value: Data, for key: StorageKey, handler: @escaping Handler<Data>) {
+  public func save(value: Data, for key: StorageKey, handler: @escaping Handler<Data>) {
     queue.async {
       do {
         try self.save(value: value, for: key)
@@ -60,7 +60,7 @@ extension DiskStorage {
 }
 
 extension DiskStorage: ReadableStorage {
-  func fetchValue(for key: StorageKey) throws -> Data {
+  public func fetchValue(for key: StorageKey) throws -> Data {
     let url = path.appendingPathComponent(key.key)
     guard let data = fileManager.contents(atPath: url.path) else {
       throw StorageError.notFound
@@ -68,7 +68,7 @@ extension DiskStorage: ReadableStorage {
     return data
   }
   
-  func fetchValue(for key: StorageKey, handler: @escaping Handler<Data>) {
+  public func fetchValue(for key: StorageKey, handler: @escaping Handler<Data>) {
     queue.async {
       handler(Result { try self.fetchValue(for: key) })
     }

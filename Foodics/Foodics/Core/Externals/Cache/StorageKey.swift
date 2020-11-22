@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum StorageKey: CaseIterable {
+public enum StorageKey: CaseIterable {
   case menu
   
   var key: String {

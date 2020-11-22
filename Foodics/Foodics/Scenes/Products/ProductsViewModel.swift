@@ -10,12 +10,14 @@ import Carbon
 
 public protocol ProductsViewModelProtocol {
   var sections: Dynamic<[Section]> { get set }
+  func refreshProducts()
 }
 
 public final class ProductsViewModel: ListableViewModel, ProductsViewModelProtocol {
   private let model: ProductModel
   private let category: MenuCategoriesResponse.Data
   public var sections = Dynamic<[Section]>([])
+  
   
   init(router: RouterProtocol,
        model: ProductModel = ProductModel(),
@@ -28,6 +30,10 @@ public final class ProductsViewModel: ListableViewModel, ProductsViewModelProtoc
   
   public func viewWillAppear() {
     fetchProducts()
+  }
+  
+  public func refreshProducts() {
+    model.refreshProducts(onFetch: handleFetchedProducts())
   }
 }
 
@@ -42,15 +48,9 @@ private extension ProductsViewModel {
     var cells = products.map { product -> [CellNode] in
       return [
         SpacingComponent(24).toCellNode(),
-        ImageComponent(url: product.image, image: nil, height: 150, extraInset: .zero, usePaddings: false).toCellNode(),
-        SpacingComponent(16).toCellNode(),
-        LabelComponent(
-          text: (UILocalization.shared.isRTLLanguage ? product.nameLocalized : product.name) ?? "Product's Name Undefined.",
-          color: .black,
-          font: TextStyles.title1,
-          isCentered: true,
-          backgroundColor: .clear
-        ).toCellNode(),
+        ProductItemComponent(id: product.id ?? "", viewModel: ProductItemViewModel(image: product.image ?? "", name: product.name ?? "", onTapAction: {
+          // TODO: - Move product to MenuViewController
+          })).toCellNode(),
         SpacingComponent(24).toCellNode(),
         SeparatorComponent(leading: false).toCellNode()
       ]
@@ -94,10 +94,6 @@ private extension ProductsViewModel {
   
   func fetchProducts() {
     model.fetchProducts(onFetch: handleFetchedProducts())
-  }
-  
-  func refreshProducts() {
-    model.refreshProducts(onFetch: handleFetchedProducts())
   }
   
   func fetchPreviousProductsPage() {

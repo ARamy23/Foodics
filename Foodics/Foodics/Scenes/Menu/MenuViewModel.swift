@@ -9,8 +9,9 @@
 import Foundation
 import Carbon
 
-public protocol MenuViewModelProtocol {
+public protocol MenuViewModelProtocol: LifecycleAware {
   var sections: Dynamic<[Section]> { get set }
+  func refreshMenu()
 }
 
 public final class MenuViewModel: ListableViewModel, MenuViewModelProtocol {
@@ -18,13 +19,17 @@ public final class MenuViewModel: ListableViewModel, MenuViewModelProtocol {
   private let model: MenuModel
   public var sections = Dynamic<[Section]>([])
   
-  init(router: RouterProtocol, model: MenuModel = MenuModel()) {
+  public init(router: RouterProtocol, model: MenuModel = MenuModel()) {
     self.model = model
     super.init(router: router)
   }
   
-  func viewWillAppear() {
+  public func viewWillAppear() {
     fetchMenu()
+  }
+  
+  public func refreshMenu() {
+    model.refreshMenu(onFetch: handleFetchedMenu())
   }
 }
 
@@ -100,10 +105,6 @@ private extension MenuViewModel {
   
   func fetchMenu() {
     model.fetchMenu(onFetch: handleFetchedMenu())
-  }
-  
-  func refreshMenu() {
-    model.refreshMenu(onFetch: handleFetchedMenu())
   }
   
   func fetchPreviousMenuPage() {

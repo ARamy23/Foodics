@@ -8,54 +8,54 @@
 
 import UIKit
 
-typealias AlertAction = (title: String, style: UIAlertAction.Style, action: () -> Void)
+public typealias AlertAction = (title: String, style: UIAlertAction.Style, action: () -> Void)
 
-final class Router: RouterProtocol {
-  weak var presentedView: BaseViewController!
+public final class Router: RouterProtocol {
+  public weak var presentedView: BaseViewController!
   
-  func present(_ view: UIViewController) {
+  public func present(_ view: UIViewController) {
     presentedView?.present(view, animated: true, completion: nil)
   }
   
-  func startActivityIndicator() {
+  public func startActivityIndicator() {
     presentedView?.startLoading()
   }
   
-  func stopActivityIndicator() {
+  public func stopActivityIndicator() {
     presentedView?.stopLoading()
   }
   
-  func dismiss() {
+  public func dismiss() {
     presentedView?.dismiss(animated: true, completion: nil)
   }
   
-  func pop() {
+  public func pop() {
     
   }
   
-  func pop(animated: Bool) {
+  public func pop(animated: Bool) {
     _ = presentedView?.navigationController?.popViewController(animated: animated)
   }
   
-  func popToRoot() {
+  public func popToRoot() {
     _ = presentedView?.navigationController?.popToRootViewController(animated: true)
   }
   
-  func popTo(vc: UIViewController) {
+  public func popTo(vc: UIViewController) {
     _ = presentedView?.navigationController?.popToViewController(vc, animated: true)
   }
   
-  func push(_ view: UIViewController) {
+  public func push(_ view: UIViewController) {
     presentedView?
       .navigationController?
       .pushViewController(view, animated: true)
   }
   
-  func alert(error: Error) {
+  public func alert(error: Error) {
     alert(title: "Error", message: error.localizedDescription, actions: [("Ok", .default)])
   }
   
-  func alert(title: String, message: String, actions: [(title: String, style: UIAlertAction.Style)]) {
+  public func alert(title: String, message: String, actions: [(title: String, style: UIAlertAction.Style)]) {
     let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
     actions
       .map {
@@ -67,7 +67,7 @@ final class Router: RouterProtocol {
     presentedView?.present(alert, animated: true)
   }
   
-  func alertWithAction(title: String?,
+  public func alertWithAction(title: String?,
                        message: String?,
                        alertStyle: UIAlertController.Style,
                        tintColor: UIColor?,
@@ -88,7 +88,7 @@ final class Router: RouterProtocol {
     presentedView?.present(alert, animated: true)
   }
   
-  func showInfo(title: String, message: String) {
-    // TODO: - Show Info
+  public func showInfo(title: String, message: String) {
+    // TODO: - Show Info Toast
   }
 }

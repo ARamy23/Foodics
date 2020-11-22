@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		08CE9BC6ADDC0DC6F457B623 /* Pods_FoodicsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55472E149AA436FAD1DD471A /* Pods_FoodicsTests.framework */; };
 		638684DA2906FBEB6550AB9F /* Pods_Foodics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA7781DE593C9E1A2249AA90 /* Pods_Foodics.framework */; };
+		B84C3ABB256A65C7004D9DCD /* PullToRefreshPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84C3ABA256A65C7004D9DCD /* PullToRefreshPlugin.swift */; };
+		B84C3ABD256A65D0004D9DCD /* Plugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84C3ABC256A65D0004D9DCD /* Plugin.swift */; };
+		B84C3AC0256A6959004D9DCD /* ProductItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84C3ABF256A6959004D9DCD /* ProductItemViewModel.swift */; };
+		B84C3AC2256A69C9004D9DCD /* ProductItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84C3AC1256A69C9004D9DCD /* ProductItemView.swift */; };
+		B84C3AC4256A6B47004D9DCD /* ProductItemComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84C3AC3256A6B47004D9DCD /* ProductItemComponent.swift */; };
 		B8620A722561B22C005D8F53 /* Localizables.strings in Resources */ = {isa = PBXBuildFile; fileRef = B8620A6E2561B22C005D8F53 /* Localizables.strings */; };
 		B8620A732561B22C005D8F53 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8620A712561B22C005D8F53 /* Language.swift */; };
 		B8620A782561B305005D8F53 /* CacheMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8620A752561B304005D8F53 /* CacheMock.swift */; };
@@ -126,6 +131,11 @@
 		55472E149AA436FAD1DD471A /* Pods_FoodicsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodicsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		751917ABE9D8B022AD1CAFC1 /* Pods-Foodics.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodics.debug.xcconfig"; path = "Target Support Files/Pods-Foodics/Pods-Foodics.debug.xcconfig"; sourceTree = "<group>"; };
 		7866E6EE40C4241A5E0E65BF /* Pods-Foodics.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodics.release.xcconfig"; path = "Target Support Files/Pods-Foodics/Pods-Foodics.release.xcconfig"; sourceTree = "<group>"; };
+		B84C3ABA256A65C7004D9DCD /* PullToRefreshPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullToRefreshPlugin.swift; sourceTree = "<group>"; };
+		B84C3ABC256A65D0004D9DCD /* Plugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plugin.swift; sourceTree = "<group>"; };
+		B84C3ABF256A6959004D9DCD /* ProductItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItemViewModel.swift; sourceTree = "<group>"; };
+		B84C3AC1256A69C9004D9DCD /* ProductItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItemView.swift; sourceTree = "<group>"; };
+		B84C3AC3256A6B47004D9DCD /* ProductItemComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItemComponent.swift; sourceTree = "<group>"; };
 		B8620A6F2561B22C005D8F53 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizables.strings; sourceTree = "<group>"; };
 		B8620A702561B22C005D8F53 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizables.strings; sourceTree = "<group>"; };
 		B8620A712561B22C005D8F53 /* Language.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
@@ -275,6 +285,24 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		B84C3AB9256A65B7004D9DCD /* Plugins */ = {
+			isa = PBXGroup;
+			children = (
+				B84C3ABA256A65C7004D9DCD /* PullToRefreshPlugin.swift */,
+				B84C3ABC256A65D0004D9DCD /* Plugin.swift */,
+			);
+			path = Plugins;
+			sourceTree = "<group>";
+		};
+		B84C3ABE256A694E004D9DCD /* Product */ = {
+			isa = PBXGroup;
+			children = (
+				B84C3ABF256A6959004D9DCD /* ProductItemViewModel.swift */,
+				B84C3AC1256A69C9004D9DCD /* ProductItemView.swift */,
+			);
+			path = Product;
+			sourceTree = "<group>";
+		};
 		B8620A6D2561B22C005D8F53 /* Localization */ = {
 			isa = PBXGroup;
 			children = (
@@ -370,6 +398,7 @@
 				B867902725648604002CBA1D /* ButtonComponent.swift */,
 				B88D2DCE25657F23004412E5 /* SeparatorComponent.swift */,
 				B88D2DD925658CCF004412E5 /* ImageComponent.swift */,
+				B84C3AC3256A6B47004D9DCD /* ProductItemComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -377,6 +406,7 @@
 		B867901E25648149002CBA1D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B84C3ABE256A694E004D9DCD /* Product */,
 				B867902125648252002CBA1D /* EmptyState */,
 			);
 			path = Views;
@@ -735,6 +765,7 @@
 		B8C5EDCD25619DD200EC4D29 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				B84C3AB9256A65B7004D9DCD /* Plugins */,
 				B8C5EDD82561A68600EC4D29 /* Loggers */,
 				B8C5ED2A25619DC200EC4D29 /* Application */,
 				B8C5ED3125619DC300EC4D29 /* UI */,
@@ -965,6 +996,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B84C3ABD256A65D0004D9DCD /* Plugin.swift in Sources */,
 				B8C5EDBC25619DC300EC4D29 /* Dynamic.swift in Sources */,
 				B88D2DD32565831A004412E5 /* CorePlugin.swift in Sources */,
 				B8C5EDC625619DC300EC4D29 /* BaseViewModel.swift in Sources */,
@@ -980,6 +1012,7 @@
 				B867902825648604002CBA1D /* ButtonComponent.swift in Sources */,
 				B8C5EDD72561A68300EC4D29 /* Logger.swift in Sources */,
 				B8C5EDC125619DC300EC4D29 /* Then.swift in Sources */,
+				B84C3AC4256A6B47004D9DCD /* ProductItemComponent.swift in Sources */,
 				B86790042562E09D002CBA1D /* NSDirectionalEdgeInsets+Extensions.swift in Sources */,
 				B8C5EDB625619DC300EC4D29 /* VerbosePlugin.swift in Sources */,
 				B8C5EDB925619DC300EC4D29 /* Router.swift in Sources */,
@@ -999,9 +1032,11 @@
 				B8C5EDAB25619DC300EC4D29 /* BasicTextField.swift in Sources */,
 				B8C5ED9425619DC300EC4D29 /* NSAttributedStringBuilder.swift in Sources */,
 				B86790062562E1BE002CBA1D /* UITableViewCustomAdapter.swift in Sources */,
+				B84C3ABB256A65C7004D9DCD /* PullToRefreshPlugin.swift in Sources */,
 				B8C5EDC225619DC300EC4D29 /* Rx+Extensions.swift in Sources */,
 				B8C5ED8F25619DC300EC4D29 /* TextStyles.swift in Sources */,
 				B8C5ED9625619DC300EC4D29 /* UILayoutPriority+Extensions.swift in Sources */,
+				B84C3AC2256A69C9004D9DCD /* ProductItemView.swift in Sources */,
 				B86790022562E077002CBA1D /* UIStackView+Extensions.swift in Sources */,
 				B8C5EDB825619DC300EC4D29 /* Endpoint.swift in Sources */,
 				B88D2DD625658906004412E5 /* ProductsViewController.swift in Sources */,
@@ -1036,6 +1071,7 @@
 				B88D2DDA25658CCF004412E5 /* ImageComponent.swift in Sources */,
 				B8C5EDC525619DC300EC4D29 /* BaseViewController.swift in Sources */,
 				B8C5EDAC25619DC300EC4D29 /* ScrollView.swift in Sources */,
+				B84C3AC0256A6959004D9DCD /* ProductItemViewModel.swift in Sources */,
 				B8678FF82562D29C002CBA1D /* Menu.swift in Sources */,
 				B8678FFA2562D5F5002CBA1D /* CategoriesEndpoint.swift in Sources */,
 				B8C5EDB125619DC300EC4D29 /* ExternalsProtocols.swift in Sources */,
