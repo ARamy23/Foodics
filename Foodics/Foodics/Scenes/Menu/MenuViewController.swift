@@ -25,9 +25,17 @@ final class MenuViewController: ListableViewController, BindableType {
   }
   
   func bindViewModel() {
-    viewModel.sections.subscribe {
-      self.renderer.render($0)
-      self.pullToRefreshPlugin.stopRefreshing()
+    viewModel.state.subscribe {
+      switch $0 {
+      case .render(let sections):
+        self.renderer.render(sections)
+        self.pullToRefreshPlugin.stopRefreshing()
+      case .showPopup(let product):
+        // TODO: - Show Popup
+        break
+      case .initial:
+        break
+      }
     }
   }
 }

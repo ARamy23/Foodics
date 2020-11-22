@@ -17,14 +17,16 @@ public final class ProductsViewModel: ListableViewModel, ProductsViewModelProtoc
   private let model: ProductModel
   private let category: MenuCategoriesResponse.Data
   public var sections = Dynamic<[Section]>([])
-  
+  private let onPickProduct: Callback<CategoryProductsResponse.Data>
   
   init(router: RouterProtocol,
        model: ProductModel = ProductModel(),
-       category: MenuCategoriesResponse.Data
+       category: MenuCategoriesResponse.Data,
+       onPickProduct: @escaping Callback<CategoryProductsResponse.Data>
   ) {
     self.model = model
     self.category = category
+    self.onPickProduct = onPickProduct
     super.init(router: router)
   }
   
@@ -49,7 +51,8 @@ private extension ProductsViewModel {
       return [
         SpacingComponent(24).toCellNode(),
         ProductItemComponent(id: product.id ?? "", viewModel: ProductItemViewModel(image: product.image ?? "", name: product.name ?? "", onTapAction: {
-          // TODO: - Move product to MenuViewController
+          self.onPickProduct(product)
+          self.router.pop(animated: true)
           })).toCellNode(),
         SpacingComponent(24).toCellNode(),
         SeparatorComponent(leading: false).toCellNode()

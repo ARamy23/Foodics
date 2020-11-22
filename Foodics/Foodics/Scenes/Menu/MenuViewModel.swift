@@ -10,14 +10,14 @@ import Foundation
 import Carbon
 
 public protocol MenuViewModelProtocol: LifecycleAware {
-  var sections: Dynamic<[Section]> { get set }
+  var state: Dynamic<MenuViewModel.State> { get set }
   func refreshMenu()
 }
 
 public final class MenuViewModel: ListableViewModel, MenuViewModelProtocol {
   
   private let model: MenuModel
-  public var sections = Dynamic<[Section]>([])
+  public var state = Dynamic<MenuViewModel.State>(.initial)
   
   public init(router: RouterProtocol, model: MenuModel = MenuModel()) {
     self.model = model
@@ -30,6 +30,14 @@ public final class MenuViewModel: ListableViewModel, MenuViewModelProtocol {
   
   public func refreshMenu() {
     model.refreshMenu(onFetch: handleFetchedMenu())
+  }
+}
+
+public extension MenuViewModel {
+  enum State {
+    case initial
+    case render(_ sections: [Section])
+    case showPopup(_ product: CategoryProductsResponse.Data)
   }
 }
 
@@ -96,7 +104,7 @@ private extension MenuViewModel {
       guard let self = self else { return }
       switch result {
       case .success(let categories):
-        self.sections.value = self.buildUI(categories)
+        self.state.value = .render(self.buildUI(categories))
       case .failure(let error):
         self.router.alert(error: error)
       }
@@ -113,7 +121,9 @@ private extension MenuViewModel {
   
   func handleSelectingCategory(_ category: MenuCategoriesResponse.Data) {
     let vc = ProductsViewController()
-    let viewMdoel = ProductsViewModel(router: self.router, category: category)
+    let viewMdoel = ProductsViewModel(router: self.router, category: category) { [weak self] product in
+      self?.state.value = .showPopup(product)
+    }
     vc.bind(to: viewMdoel)
     
     router.push(vc)
