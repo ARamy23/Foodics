@@ -15,6 +15,7 @@ target 'Foodics' do
   pod 'Moya/RxSwift', '~> 14.0' # Moya + RxSwift to be able to do complex stuff
   pod 'PKHUD', '~> 5.3' # Generic Loader Pod
   pod 'Carbon', '~> 1.0.0-rc.6' # For Faster UI Building by Code and butter-smooth UI
+  pod 'PopupDialog', '~> 1.1' # For presenting popups with ease
 
   target 'FoodicsTests' do
     inherit! :search_paths

@@ -31,7 +31,7 @@ final class MenuViewController: ListableViewController, BindableType {
         self.renderer.render(sections)
         self.pullToRefreshPlugin.stopRefreshing()
       case .showPopup(let product):
-        // TODO: - Show Popup
+        self.router.popup(viewModel: PopupViewModel(image: product.image ?? .empty, title: product.name ?? .empty, description: product.price?.string ?? .empty))
         break
       case .initial:
         break

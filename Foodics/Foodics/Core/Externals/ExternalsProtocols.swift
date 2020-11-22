@@ -31,6 +31,7 @@ public protocol RouterProtocol: class {
   func popTo(vc: UIViewController)
   func push(_ view: UIViewController)
   func showInfo(title: String, message: String)
+  func popup(viewModel: PopupViewModelProtocol)
   func alert(error: Error)
   func alert(title: String, message: String, actions: [(title: String, style: UIAlertAction.Style)])
   func alertWithAction(title: String?, message: String?, alertStyle: UIAlertController.Style, tintColor: UIColor?, actions: [AlertAction])

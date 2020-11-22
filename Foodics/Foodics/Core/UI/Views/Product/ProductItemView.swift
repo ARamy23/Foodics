@@ -11,11 +11,12 @@ import Nuke
 
 public final class ProductItemView: UIView, Configurable {
   let imageView: UIImageView = UIImageView().then {
-    $0.contentMode = .scaleAspectFill
+    $0.contentMode = .scaleAspectFit
   }
   
   let nameLabel = Label(font: TextStyles.body, color: . black).then {
     $0.numberOfLines = 0
+    $0.textAlignment = .center
   }
   
   lazy var vStack = UIStackView(axis: .vertical, alignment: .fill, distribution: .fill, spacing: 8).then {
@@ -26,7 +27,7 @@ public final class ProductItemView: UIView, Configurable {
   }
   
   public func configure(with viewModel: ProductItemViewModelProtocol) {
-    if let imageURL = URL(string: viewModel.name) {
+    if let imageURL = URL(string: viewModel.image) {
       Nuke.loadImage(with: imageURL, into: imageView)
     } else {
       imageView.isHidden = true

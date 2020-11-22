@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import PopupDialog
+import Nuke
 
 public typealias AlertAction = (title: String, style: UIAlertAction.Style, action: () -> Void)
 
@@ -90,5 +92,24 @@ public final class Router: RouterProtocol {
   
   public func showInfo(title: String, message: String) {
     // TODO: - Show Info Toast
+  }
+  
+  public func popup(viewModel: PopupViewModelProtocol) {
+    if let imageURL = viewModel.image.url {
+      ImagePipeline.shared.loadImage(with: imageURL, completion: { result in
+        guard let image = try? result.get().image else {
+          self.showPopup(title: viewModel.title, message: viewModel.description)
+          return
+        }
+        self.showPopup(title: viewModel.title, message: viewModel.description, image: image)
+      })
+    } else {
+      self.showPopup(title: viewModel.title, message: viewModel.description)
+    }
+  }
+  
+  private func showPopup(title: String, message: String, image: UIImage? = nil) {
+    let popup = PopupDialog(title: title, message: message, image: image)
+    self.presentedView.present(popup, animated: true, completion: nil)
   }
 }
